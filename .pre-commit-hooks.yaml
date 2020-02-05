@@ -8,5 +8,5 @@
   name: Validate Kustomize Recipe
   description: This hook validates that a kustomization.yaml will yield a build
   entry: hooks/kustomize-build
-  file: kustomization.yaml
+  files: '^.ustomization(\.y.+)?'
   language: script

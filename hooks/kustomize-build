@@ -2,8 +2,5 @@
 
 for i in $*
 do
-    if [[ -f `dirname $i`/kustomization.yaml ]];
-    then
-        kustomize build `dirname $i` > /dev/null
-    fi
+    kustomize build `dirname $i` > /dev/null
 done
