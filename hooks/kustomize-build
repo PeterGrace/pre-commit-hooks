@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -xeuo pipefail
 
+echo "ARGUMENTS INBOUND ARE $*"
+
 for i in $*
 do
     pushd `dirname $i`
