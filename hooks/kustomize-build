@@ -3,5 +3,7 @@ set -xeuo pipefail
 
 for i in $*
 do
-    kustomize build `dirname $i` | kubeval
+    pushd `dirname $i`
+    kustomize build . | kubeval
+    popd
 done
