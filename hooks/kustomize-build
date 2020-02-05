@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-kustomize build $*
+
+for i in $*
+do
+    kustomize build `dirname $i`
+done

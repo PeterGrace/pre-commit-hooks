@@ -4,3 +4,9 @@
   entry: hooks/terraform-format
   types: ['terraform']
   language: script
+- id: kustomize-build
+  name: Validate Kustomize Recipe
+  description: This hook validates that a kustomization.yaml will yield a build
+  entry: hooks/kustomize-build
+  file: kustomization.yaml
+  language: script
