@@ -2,5 +2,5 @@
 
 for i in $*
 do
-    kustomize build `dirname $i`
+    kustomize build `dirname $i` > /dev/null
 done
