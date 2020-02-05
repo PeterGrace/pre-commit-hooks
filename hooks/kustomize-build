@@ -2,5 +2,5 @@
 
 for i in $*
 do
-    kustomize build `dirname $i` > /dev/null
+    kustomize build `dirname $i` | kubeval
 done
