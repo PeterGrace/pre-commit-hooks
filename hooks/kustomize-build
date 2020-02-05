@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-set -xeuo pipefail
-
-echo "ARGUMENTS INBOUND ARE $*"
+set -euo pipefail
 
 for i in $*
 do
