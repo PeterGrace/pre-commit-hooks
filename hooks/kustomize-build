@@ -4,7 +4,9 @@ set -euo pipefail
 for i in $*
 do
     pushd `dirname $i`
-    output=$(kustomize build .)
-    echo $output | kubeval
+    manifest=$(mktemp)
+    kustomize build . -o $manifest
+    kubeval $manifest
+    rm $manifest
     popd
 done
