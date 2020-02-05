@@ -2,5 +2,5 @@
   name: Terraform Format
   description: This hook validates and lints terraform code
   entry: terraform-format
-  files: *.tf
+  types: ['terraform']
   language: script
