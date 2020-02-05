@@ -1,6 +1,6 @@
 - id: terraform-format
   name: Terraform Format
   description: This hook validates and lints terraform code
-  entry: terraform-format
+  entry: hooks/terraform-format
   types: ['terraform']
   language: script
