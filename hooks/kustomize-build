@@ -6,7 +6,7 @@ do
     pushd `dirname $i`
     manifest=$(mktemp)
     kustomize build . -o $manifest
-    kubeval $manifest
+    kubeval --ignore-missing-schermas $manifest
     rm $manifest
     popd
 done
