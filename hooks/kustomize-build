@@ -6,6 +6,7 @@ echo "ARGUMENTS INBOUND ARE $*"
 for i in $*
 do
     pushd `dirname $i`
-    kustomize build . | kubeval
+    output=$(kustomize build .)
+    echo $output | kubeval
     popd
 done
