@@ -6,7 +6,8 @@ do
     pushd `dirname $i`
     manifest=$(mktemp)
     kustomize build . -o $manifest
-    kubeval --ignore-missing-schemas $manifest
+    # The intention was to run kubeval, but man it takes FOREVER on large yamls.  Disabling for now
+    #kubeval --ignore-missing-schemas $manifest
     rm $manifest
     popd
 done
