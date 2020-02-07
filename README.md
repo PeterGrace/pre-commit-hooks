@@ -2,7 +2,7 @@
 Repository of pre-commit hooks I've created to help guard myself against dumb mistakes in commits.
 
 ## how to use
-This repository is meant to be referenced by the [https://pre-commit.com](pre-commit) helper app.
+This repository is meant to be referenced by the [pre-commit](https://pre-commit.com) helper app.
 Add this to your `.pre-commit-config.yaml` file at the root of your repo, specifying the hooks you wish to use for the repository in question:
 ```
 - repo: https://github.com/PeterGrace/pre-commit-hooks
