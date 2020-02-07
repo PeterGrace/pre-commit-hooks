@@ -7,7 +7,7 @@ do
     tmpdir=$(mktemp -d)
     foundlist="$tmpdir/found"
     listedlist="$tmpdir/listed"
-    find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -vP '(^)?.ustomization(\.y.+)?'|sort > $foundlist
+    find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -v flux-patch.yaml|grep -vP '(^)?.ustomization(\.y.+)?'|sort > $foundlist
     cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist|sed 's,/(\+\\.y.ml),$1,g'|sort > $listedlist
     if [[ ! `diff -u $foundlist $listedlist >/dev/null` ]]
     then
