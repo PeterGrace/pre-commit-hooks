@@ -11,7 +11,7 @@ do
     cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist|sed 's,/(\+\\.y.ml),$1,g'|sort > $listedlist
     if [[ ! `diff -u $foundlist $listedlist >/dev/null` ]]
     then
-        echo "We found $FOUND yaml files but kustomization only has $LISTED.  The following files aren't in the manifest:"
+        echo "===INCONSISTENCY FOUND IN KUSTOMIZE MANIFEST VS. YAML FILES IN DIRECTORY===" 
         diff -u $foundlist $listedlist
         exit 1
     fi
