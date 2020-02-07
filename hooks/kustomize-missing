@@ -12,6 +12,7 @@ do
     if [[ ! `diff -u $foundlist $listedlist >/dev/null` ]]
     then
         echo "===INCONSISTENCY FOUND IN KUSTOMIZE MANIFEST VS. YAML FILES IN DIRECTORY===" 
+        echo "Check $i and the files in its subsequent folders."
         diff -u $foundlist $listedlist
         exit 1
     fi
