@@ -16,3 +16,9 @@
   entry: hooks/kustomize-missing
   files: '(^)?.ustomization(\.y.+)?'
   language: script
+- id: check-all-kustomize
+  name: Check All Kustomize Manifests
+  description: This makes sure all kustomize manifests properly build in the repo
+  entry: hooks/check-all-kustomize
+  always_run: true
+  language: script

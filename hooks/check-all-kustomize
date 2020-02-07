@@ -1,3 +1,8 @@
 #!/bin/bash
 cd `git rev-parse --show-toplevel`
-find . -name kustomization.yaml -execdir bash -c "pwd;kustomize build . >/dev/null; if [[ $? -ne 0 ]];then exit 1;fi" \;
+for dir in $(find `pwd -P` -name kustomization.yaml -exec dirname {} +)
+do
+    echo $dir
+    cd $dir
+    kustomize build . >> /dev/null || exit 1
+done
