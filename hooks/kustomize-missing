@@ -4,7 +4,7 @@ set -euo pipefail
 for i in $*
 do
     pushd `dirname $i`
-    tmpdir = $(mktemp -d)
+    tmpdir=$(mktemp -d)
     foundlist="$(tmpdir)/found"
     listedlist="$(tmpdir)/listed"
     find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -vP '(^)?.ustomization(\.y.+)?' > $foundlist
