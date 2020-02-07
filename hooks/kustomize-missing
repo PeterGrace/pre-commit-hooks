@@ -12,7 +12,7 @@ do
     if [[ ! `diff -u $foundlist $listedlist >/dev/null` ]]
     then
         echo "We found $FOUND yaml files but kustomization only has $LISTED.  The following files aren't in the manifest:"
-        diff -u $foundlist $listedlist`
+        diff -u $foundlist $listedlist
         exit 1
     fi
     popd
