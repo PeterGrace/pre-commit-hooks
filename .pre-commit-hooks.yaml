@@ -10,3 +10,9 @@
   entry: hooks/kustomize-build
   files: '(^)?.ustomization(\.y.+)?'
   language: script
+- id: kustomize-missing
+  name: All yaml in kustomize manifest
+  description: This hook validates that a kustomization.yaml has all yaml
+  entry: hooks/kustomize-missing
+  files: '(^)?.ustomization(\.y.+)?'
+  language: script
