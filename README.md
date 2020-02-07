@@ -20,3 +20,4 @@ Add this to your `.pre-commit-config.yaml` file at the root of your repo, specif
   - kustomize-build -- runs `kustomize build .` against a found kustomize manifest and ensures the files can actually create a legit manifest.
   - kustomize-missing -- compares the found yaml manifests vs. the listed yamls in kustomize manifest to detect when there are discrepancies.
     - if you intentionally want to not put a patched yaml in your kustomization.yaml file, add it to the file like `#ignore file.yaml` 
+  - check-all-kustomize -- like kustomize-build, but iterates the entire git repo attempting to build all kustomize recipes.  Good for ensuring your changes don't clobber a different deployment.
