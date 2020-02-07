@@ -8,7 +8,7 @@ do
     foundlist="$tmpdir/found"
     listedlist="$tmpdir/listed"
     find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -vP '(^)?.ustomization(\.y.+)?' > $foundlist
-    cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?' > $listedlist
+    cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist > $listedlist
     export FOUND=$(cat $foundlist | wc -l)
     export LISTED=$(cat $listedlist | wc -l)
     if [[ $FOUND -ne $LISTED ]]
