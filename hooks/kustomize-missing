@@ -5,6 +5,7 @@ for i in $*
 do
     pushd `dirname $i`
     tmpdir=$(mktemp -d)
+    trap "rm -rf $tmpdir" EXIT
     foundlist="$tmpdir/found"
     listedlist="$tmpdir/listed"
     find . -mindepth 2 -name \*.yaml|sed s,\./,,|sort > $foundlist
