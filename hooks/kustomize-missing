@@ -9,7 +9,7 @@ do
     listedlist="$tmpdir/listed"
     find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -v flux-patch.yaml|grep -vP '(^)?.ustomization(\.y.+)?'|sort > $foundlist
     cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist|sed 's,/(\+\\.y.ml),$1,g'|sort > $listedlist
-    if [[ `diff -u $foundlist $listedlist >/dev/null` ]]
+    if ! cmp -s $foundlist $listedlist
     then
         echo "===INCONSISTENCY FOUND IN KUSTOMIZE MANIFEST VS. YAML FILES IN DIRECTORY===" 
         echo "Check $i and the files in its subsequent folders."
