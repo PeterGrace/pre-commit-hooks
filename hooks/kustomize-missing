@@ -7,14 +7,12 @@ do
     tmpdir=$(mktemp -d)
     foundlist="$tmpdir/found"
     listedlist="$tmpdir/listed"
-    find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -vP '(^)?.ustomization(\.y.+)?' > $foundlist
-    cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist|sed 's,/(\+\\.y.ml),$1,g' > $listedlist
-    export FOUND=$(cat $foundlist | wc -l)
-    export LISTED=$(cat $listedlist | wc -l)
-    if [[ $FOUND -ne $LISTED ]]
+    find . -name \*.yaml| awk -F "/" '{print $NF}'|grep -vP '(^)?.ustomization(\.y.+)?'|sort > $foundlist
+    cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|grep -oFf $foundlist|sed 's,/(\+\\.y.ml),$1,g'|sort > $listedlist
+    if [[ ! `diff -u $foundlist $listedlist >/dev/null` ]]
     then
         echo "We found $FOUND yaml files but kustomization only has $LISTED.  The following files aren't in the manifest:"
-        cat `basename $i` $listedlist |sort|uniq -u
+        diff -u $foundlist $listedlist`
         exit 1
     fi
     popd
