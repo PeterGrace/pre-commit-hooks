@@ -8,7 +8,7 @@ do
     trap 'rm -rf "$tmpdir"' EXIT
     foundlist="$tmpdir/found"
     listedlist="$tmpdir/listed"
-    find . -mindepth 2 -name \*.yaml|sed s,\./,,|sort > $foundlist
+    find . -mindepth 1 -name \*.yaml|sed s,\./,,|sort > $foundlist
     #cat `basename $i` | grep -vP '(^)?.ustomization(\.y.+)?'|sed 's,/(\+\\.y.ml),$1,g'|sort > $listedlist
     cat `basename $i` |perl -nle 'if (m#([\w-\/\._]+\.y.?ml)$#) { print $1;}' |sort > $listedlist
     if ! cmp -s $foundlist $listedlist
