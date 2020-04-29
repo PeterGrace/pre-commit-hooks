@@ -1,0 +1,4 @@
+#!/bin/bash
+pushd $(git rev-parse --show-toplevel)
+pre-commit autoupdate
+popd

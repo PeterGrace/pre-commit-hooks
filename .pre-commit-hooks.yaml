@@ -1,3 +1,9 @@
+- id: precommit-autoupdate
+  name: Run pre-commit autoupdate every time
+  description: This autoupdates the modules.
+  entry: hooks/precommit-autoupdate
+  always_run: true
+  language: script
 - id: terraform-format
   name: Terraform Format
   description: This hook validates and lints terraform code
