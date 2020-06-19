@@ -20,7 +20,6 @@
   name: All yaml in kustomize manifest
   description: This hook validates that a kustomization.yaml has all yaml
   entry: hooks/kustomize-missing
-  files: '(^)?.ustomization(\.y.+)?'
   language: script
   always_run: true
 - id: check-all-kustomize
