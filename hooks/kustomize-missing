@@ -3,6 +3,11 @@ set -euo pipefail
 
 for i in $*
 do
+    if [[ ! "$i" == "kustomization.yaml" ]]
+    then
+        echo "skipping $i as it is not a kustomize manifest"
+        continue
+    fi
     pushd `dirname $i`
     tmpdir=$(mktemp -d)
     trap 'rm -rf "$tmpdir"' EXIT
